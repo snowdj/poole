@@ -11,7 +11,7 @@ tagline:          The Poole style
 url:              http://snowdj.github.io/poole/
 paginate:         1
 
-baseurl:          http://snowdj.github.io/poole/
+baseurl:          /poole/
 
 author:
   name:           snowdj
