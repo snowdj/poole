@@ -1,32 +1,24 @@
 # Dependencies
 markdown:         redcarpet
-
+pygments:         true
 
 # Permalinks
 permalink:        pretty
 
 # Setup
-title:            Blog
-tagline:          The Poole style
-url:              http://snowdj.github.io/poole/
-paginate:         3
-
-baseurl:          http://snowdj.github.io/poole/
+title:            Hyde
+tagline:          'A Jekyll theme'
+description:      'Everygreen <a href="http://jekyllrb.com" target="_blank">Jekyll</a> theme that pairs a prominent sidebar with uncomplicated content. Made by <a href="https://twitter.com/mdo" target="_blank">@mdo</a>.'
+url:              https://github.com/snowdj
 
 author:
-  name:           snowdj
+  name:           'snowdj'
   url:            https://twitter.com/snowdj
-  email:          snowdj@gmail.com
 
-
-
-
-
+paginate:         5
 
 # Custom vars
-version:          1.0.0
-github:
-  repo:           http://snowdj.github.io/poole/
+version:          2.0.0
 
-# This is the list of pages to incldue in the header of the website.
-pages_list: {'About':'/poole/about','Archive':'/poole/archive','Feed':'/poole/atom.xml'}
+github:
+  repo:           https://github.com/snowdj
