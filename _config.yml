@@ -1,6 +1,6 @@
 # Dependencies
 markdown:         redcarpet
-pygments:         true
+
 
 # Permalinks
 permalink:        pretty
@@ -10,7 +10,7 @@ title:            Blog
 tagline:          The Poole style
 url:              http://snowdj.github.io/poole/
 paginate:         1
-baseurl:          '/'
+baseurl:          /
 author:
   name:           snowdj
   url:            https://twitter.com/snowdj
