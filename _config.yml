@@ -18,11 +18,7 @@ author:
   url:            https://twitter.com/snowdj
   email:          snowdj@gmail.com
 
-# add a navigation bar at the top of the website with links to the About page, Archive page, and the feed. To do this, I modified the file _config.yml to define a dictionary of pages to show in my header
-pages_list:       
-  About: '/about'
-  Archive: '/archive'
-  Feed: '/atom.xml'
+
 
 
 
@@ -33,4 +29,4 @@ github:
   repo:           http://snowdj.github.io/poole/
 
 # This is the list of pages to incldue in the header of the website.
-pages_list: ['About', 'Archive']
+pages_list: {'About':'/about','Archive':'/archive','Feed':'/atom.xml'}
