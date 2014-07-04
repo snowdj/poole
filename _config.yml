@@ -24,7 +24,11 @@ pages_list:
 
 
 
+
 # Custom vars
 version:          1.0.0
 github:
   repo:           http://snowdj.github.io/poole/
+
+# This is the list of pages to incldue in the header of the website.
+pages_list: ['About', 'Archive']
