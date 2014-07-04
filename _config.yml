@@ -9,7 +9,7 @@ permalink:        pretty
 title:            Blog
 tagline:          The Poole style
 url:              http://snowdj.github.io/poole/
-paginate:         3
+paginate:         1
 
 baseurl:          http://snowdj.github.io/poole/
 
