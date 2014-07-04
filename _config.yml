@@ -10,7 +10,7 @@ title:            Blog
 tagline:          The Poole style
 url:              http://snowdj.github.io/poole/
 paginate:         1
-baseurl:          '/'
+baseurl:          http://snowdj.github.io/poole/
 author:
   name:           snowdj
   url:            https://twitter.com/snowdj
