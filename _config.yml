@@ -6,17 +6,25 @@ pygments:         true
 permalink:        pretty
 
 # Setup
-title:            Poole
-tagline:          The Jekyll Butler
-url:              http://getpoole.com
+title:            Blog
+tagline:          The Poole style
+url:              http://snowdj.github.io/poole/
 paginate:         1
-baseurl:          /
+baseurl:          http://snowdj.github.io/poole/
 author:
-  name:           Mark Otto
-  url:            https://twitter.com/mdo
-  email:          markdotto@gmail.com
+  name:           snowdj
+  url:            https://twitter.com/snowdj
+  email:          snowdj@gmail.com
+
+# add a navigation bar at the top of the website with links to the About page, Archive page, and the feed. To do this, I modified the file _config.yml to define a dictionary of pages to show in my header
+pages_list:       
+  About: '/about'
+  Archive: '/archive'
+  Feed: '/atom.xml'
+
+
 
 # Custom vars
 version:          1.0.0
 github:
-  repo:           https://github.com/poole/poole
+  repo:           http://snowdj.github.io/poole/
