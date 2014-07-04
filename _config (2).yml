@@ -1,0 +1,32 @@
+# Dependencies
+markdown:         redcarpet
+
+
+# Permalinks
+permalink:        pretty
+
+# Setup
+title:            Blog
+tagline:          The Poole style
+url:              http://snowdj.github.io/poole/
+paginate:         3
+
+baseurl:          http://snowdj.github.io/poole/
+
+author:
+  name:           snowdj
+  url:            https://twitter.com/snowdj
+  email:          snowdj@gmail.com
+
+
+
+
+
+
+# Custom vars
+version:          1.0.0
+github:
+  repo:           http://snowdj.github.io/poole/
+
+# This is the list of pages to incldue in the header of the website.
+pages_list: {'About':'/poole/about','Archive':'/poole/archive','Feed':'/poole/atom.xml'}
