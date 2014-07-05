@@ -26,7 +26,7 @@ add
 This is the list of pages to incldue in the header of the website.
 pages_list: {'About':'/poole/about','Archive':'/poole/archive','Feed':'/poole/atom.xml'}
 
-{% highlight html %}
+{% endhighlight %}
 
 
 in _config.yml
@@ -35,7 +35,7 @@ setup this baseurl, which decide the relative directory.
 
 {% highlight html %}
 baseurl:          http://snowdj.github.io/poole/
-{% highlight html %}
+{% endhighlight %}
 
 
 It tell github that what is the base url for whole blog and in the blog we add archive and about two pages.
