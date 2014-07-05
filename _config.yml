@@ -1,6 +1,6 @@
 # Dependencies
 markdown:         redcarpet
-pygments: 		  true
+pygments:         true
 
 # Permalinks
 permalink:        pretty
@@ -15,7 +15,7 @@ baseurl:          http://snowdj.github.io/poole/
 
 author:
   name:           snowdj
-  url:            https://twitter.com/snowdj/poole/
+  url:            https://twitter.com/snowdj
   email:          snowdj@gmail.com
 
 
