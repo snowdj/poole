@@ -1,6 +1,7 @@
 ---
 layout: post
-title: Poole directory setting problem down
+title: Poole directory setting problem done
+comments: True
 ---
 I follow the this webpage http://joshualande.com/jekyll-github-pages-poole/ to make the poole style blog possible.
 
@@ -9,18 +10,18 @@ The keys are
 
 ## set up in _config.yml
 add 
-```
-# This is the list of pages to incldue in the header of the website.
+>
+This is the list of pages to incldue in the header of the website.
 pages_list: {'About':'/poole/about','Archive':'/poole/archive','Feed':'/poole/atom.xml'}
-```
+
 
 in _config.yml
 
-setup the 
+setup this baseurl, which decide the relative directory.
 
-```
-baseurl:          http://snowdj.github.io/poole/
-```
+>
+> baseurl:          http://snowdj.github.io/poole/
+
 
 
 It tell github that what is the base url for whole blog and in the blog we add archive and about two pages.
@@ -29,7 +30,7 @@ It tell github that what is the base url for whole blog and in the blog we add a
 
 ## set up in default.html in layout folder
 
-```
+>
 <a href="{{ site.baseurl }}" title="Home">{{ site.title }}</a>
           <small>{{ site.tagline }}</small>
           {% for page in site.pages_list %}
@@ -37,25 +38,38 @@ It tell github that what is the base url for whole blog and in the blog we add a
             <small><a href="{{ page[1]  }}">{{ page[0] }}</a></small>
           {% endfor %}
         </h3>
-```
+
+
 
 The code tell github to render the site.page_list for all pages.
 
 ## set up archive.
 
-```
-
+>
 ---
 layout: page
 title: Archive
 ---
-
+>
 ## Blog Posts
-
+>
 {% for post in site.posts %}
   * {{ post.date | date_to_string }} &raquo; [ {{ post.title }} ]({{ site.baseurl }}{{ post.url }})
 {% endfor %}
 
-```
+
+## add disqus
+
+o do that, I modified the file _layouts/default.html to include the line:
+~~~
+{% include comments.html %}
+~~~
+
+"By setting up the code this way, I can enabled commenting on a page-by-page basis. All I have to do is set "comments: True" in the YAML header of the post.""
+
+
+then created a file _includes/comments.html which includes the code given to me by Disqus:
+
+
 
 That's all. 
