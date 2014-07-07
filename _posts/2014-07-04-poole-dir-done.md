@@ -7,6 +7,18 @@ I follow the this webpage http://joshualande.com/jekyll-github-pages-poole/ to m
 
 The keys are
 
+## another way to set up url
+
+
+{% highlight yaml %}
+baseurl: "/blog"
+url: "http://openjerseycity.org"
+
+# Build settings
+markdown: kramdown
+permalink: pretty
+{% endhighlight %}
+
 
 ## set up in _config.yml
 
