@@ -111,6 +111,9 @@ title: Archive
 
 I add this {{ site.baseurl }} in front of the {{ post.url }}.
 
+In the lanyon style, I also change the default.html and page.html with the {{ site.baseurl }}. Of couse, I also need set the {{ site.baseurl }} in _config.yml.
+
+
 Also in the index.html
 
 {% highlight html %}
