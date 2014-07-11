@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>Git basic command</title>
+
+
+
+
+
+<style type="text/css">
+body {
+   font-family: Helvetica, arial, sans-serif;
+   font-size: 14px;
+   line-height: 1.6;
+   padding-top: 10px;
+   padding-bottom: 10px;
+   background-color: white;
+   padding: 30px; }
+
+body > *:first-child {
+   margin-top: 0 !important; }
+body > *:last-child {
+   margin-bottom: 0 !important; }
+
+a {
+   color: #4183C4; }
+a.absent {
+   color: #cc0000; }
+a.anchor {
+   display: block;
+   padding-left: 30px;
+   margin-left: -30px;
+   cursor: pointer;
+   position: absolute;
+   top: 0;
+   left: 0;
+   bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+   margin: 20px 0 10px;
+   padding: 0;
+   font-weight: bold;
+   -webkit-font-smoothing: antialiased;
+   cursor: text;
+   position: relative; }
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+   text-decoration: none; }
+
+h1 tt, h1 code {
+   font-size: inherit; }
+
+h2 tt, h2 code {
+   font-size: inherit; }
+
+h3 tt, h3 code {
+   font-size: inherit; }
+
+h4 tt, h4 code {
+   font-size: inherit; }
+
+h5 tt, h5 code {
+   font-size: inherit; }
+
+h6 tt, h6 code {
+   font-size: inherit; }
+
+h1 {
+   font-size: 28px;
+   color: black; }
+
+h2 {
+   font-size: 24px;
+   border-bottom: 1px solid #cccccc;
+   color: black; }
+
+h3 {
+   font-size: 18px; }
+
+h4 {
+   font-size: 16px; }
+
+h5 {
+   font-size: 14px; }
+
+h6 {
+   color: #777777;
+   font-size: 14px; }
+
+p, blockquote, ul, ol, dl, li, table, pre {
+   margin: 15px 0; }
+
+hr {
+   border: 0 none;
+   color: #cccccc;
+   height: 4px;
+   padding: 0;
+}
+
+body > h2:first-child {
+   margin-top: 0;
+   padding-top: 0; }
+body > h1:first-child {
+   margin-top: 0;
+   padding-top: 0; }
+body > h1:first-child + h2 {
+   margin-top: 0;
+   padding-top: 0; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+   margin-top: 0;
+   padding-top: 0; }
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+   margin-top: 0;
+   padding-top: 0; }
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+   margin-top: 0; }
+
+li p.first {
+   display: inline-block; }
+li {
+   margin: 0; }
+ul, ol {
+   padding-left: 30px; }
+
+ul :first-child, ol :first-child {
+   margin-top: 0; }
+
+dl {
+   padding: 0; }
+dl dt {
+   font-size: 14px;
+   font-weight: bold;
+   font-style: italic;
+   padding: 0;
+   margin: 15px 0 5px; }
+dl dt:first-child {
+   padding: 0; }
+dl dt > :first-child {
+   margin-top: 0; }
+dl dt > :last-child {
+   margin-bottom: 0; }
+dl dd {
+   margin: 0 0 15px;
+   padding: 0 15px; }
+dl dd > :first-child {
+   margin-top: 0; }
+dl dd > :last-child {
+   margin-bottom: 0; }
+
+blockquote {
+   border-left: 4px solid #dddddd;
+   padding: 0 15px;
+   color: #777777; }
+blockquote > :first-child {
+   margin-top: 0; }
+blockquote > :last-child {
+   margin-bottom: 0; }
+
+table {
+   padding: 0;border-collapse: collapse; }
+table tr {
+   border-top: 1px solid #cccccc;
+   background-color: white;
+   margin: 0;
+   padding: 0; }
+table tr:nth-child(2n) {
+   background-color: #f8f8f8; }
+table tr th {
+   font-weight: bold;
+   border: 1px solid #cccccc;
+   margin: 0;
+   padding: 6px 13px; }
+table tr td {
+   border: 1px solid #cccccc;
+   margin: 0;
+   padding: 6px 13px; }
+table tr th :first-child, table tr td :first-child {
+   margin-top: 0; }
+table tr th :last-child, table tr td :last-child {
+   margin-bottom: 0; }
+
+img {
+   max-width: 100%; }
+
+span.frame {
+   display: block;
+   overflow: hidden; }
+span.frame > span {
+   border: 1px solid #dddddd;
+   display: block;
+   float: left;
+   overflow: hidden;
+   margin: 13px 0 0;
+   padding: 7px;
+   width: auto; }
+span.frame span img {
+   display: block;
+   float: left; }
+span.frame span span {
+   clear: both;
+   color: #333333;
+   display: block;
+   padding: 5px 0 0; }
+span.align-center {
+   display: block;
+   overflow: hidden;
+   clear: both; }
+span.align-center > span {
+   display: block;
+   overflow: hidden;
+   margin: 13px auto 0;
+   text-align: center; }
+span.align-center span img {
+   margin: 0 auto;
+   text-align: center; }
+span.align-right {
+   display: block;
+   overflow: hidden;
+   clear: both; }
+span.align-right > span {
+   display: block;
+   overflow: hidden;
+   margin: 13px 0 0;
+   text-align: right; }
+span.align-right span img {
+   margin: 0;
+   text-align: right; }
+span.float-left {
+   display: block;
+   margin-right: 13px;
+   overflow: hidden;
+   float: left; }
+span.float-left span {
+   margin: 13px 0 0; }
+span.float-right {
+   display: block;
+   margin-left: 13px;
+   overflow: hidden;
+   float: right; }
+span.float-right > span {
+   display: block;
+   overflow: hidden;
+   margin: 13px auto 0;
+   text-align: right; }
+
+code, tt {
+   margin: 0 2px;
+   padding: 0 5px;
+   white-space: nowrap;
+   border: 1px solid #eaeaea;
+   background-color: #f8f8f8;
+   border-radius: 3px; }
+
+pre code {
+   margin: 0;
+   padding: 0;
+   white-space: pre;
+   border: none;
+   background: transparent; }
+
+.highlight pre {
+   background-color: #f8f8f8;
+   border: 1px solid #cccccc;
+   font-size: 13px;
+   line-height: 19px;
+   overflow: auto;
+   padding: 6px 10px;
+   border-radius: 3px; }
+
+pre {
+   background-color: #f8f8f8;
+   border: 1px solid #cccccc;
+   font-size: 13px;
+   line-height: 19px;
+   overflow: auto;
+   padding: 6px 10px;
+   border-radius: 3px; }
+pre code, pre tt {
+   background-color: transparent;
+   border: none; }
+
+sup {
+   font-size: 0.83em;
+   vertical-align: super;
+   line-height: 0;
+}
+* {
+	 -webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+   body {
+      width: 854px;
+      margin:0 auto;
+   }
+}
+@media print {
+	 table, pre {
+		  page-break-inside: avoid;
+	 }
+	 pre {
+		  word-wrap: break-word;
+	 }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<h1>Git basic command</h1>
+
+<p>source: <a href="http://www.ruanyifeng.com/blog/2014/06/git_remote.html">ruanyifeng</a></p>
+
+<pre><code>git clone
+git remote
+git fetch
+git pull
+git push
+</code></pre>
+
+<p><img src="http://image.beekka.com/blog/2014/bg2014061202.jpg" alt="gitdemo"/></p>
+
+<p>ä¸€ã€git clone</p>
+
+<p>è¿œç¨‹æ“ä½œçš„ç¬¬ä¸€æ­¥ï¼Œé€šå¸¸æ˜¯ä»Žè¿œç¨‹ä¸»æœºå…‹éš†ä¸€ä¸ªç‰ˆæœ¬åº“ï¼Œè¿™æ—¶å°±è¦ç”¨åˆ°git cloneå‘½ä»¤ã€‚</p>
+
+<pre><code>$ git clone &lt;ç‰ˆæœ¬åº“çš„ç½‘å€&gt;
+</code></pre>
+
+<p>æ¯”å¦‚ï¼Œå…‹éš†jQueryçš„ç‰ˆæœ¬åº“ã€‚</p>
+
+<pre><code>$ git clone https://github.com/jquery/jquery.git
+</code></pre>
+
+<p>è¯¥å‘½ä»¤ä¼šåœ¨æœ¬åœ°ä¸»æœºç”Ÿæˆä¸€ä¸ªç›®å½•ï¼Œä¸Žè¿œç¨‹ä¸»æœºçš„ç‰ˆæœ¬åº“åŒåã€‚å¦‚æžœè¦æŒ‡å®šä¸åŒçš„ç›®å½•åï¼Œå¯ä»¥å°†ç›®å½•åä½œä¸ºgit cloneå‘½ä»¤çš„ç¬¬äºŒä¸ªå‚æ•°ã€‚</p>
+
+<pre><code>$ git clone &lt;ç‰ˆæœ¬åº“çš„ç½‘å€&gt; &lt;æœ¬åœ°ç›®å½•å&gt;
+</code></pre>
+
+<p>git cloneæ”¯æŒå¤šç§åè®®ï¼Œé™¤äº†HTTP(s)ä»¥å¤–ï¼Œè¿˜æ”¯æŒSSHã€Gitã€æœ¬åœ°æ–‡ä»¶åè®®ç­‰ï¼Œä¸‹é¢æ˜¯ä¸€äº›ä¾‹å­ã€‚</p>
+
+<pre><code>$ git clone http[s]://example.com/path/to/repo.git/
+$ git clone ssh://example.com/path/to/repo.git/
+$ git clone git://example.com/path/to/repo.git/
+$ git clone /opt/git/project.git 
+$ git clone file:///opt/git/project.git
+$ git clone ftp[s]://example.com/path/to/repo.git/
+$ git clone rsync://example.com/path/to/repo.git/
+</code></pre>
+
+<p>SSHåè®®è¿˜æœ‰å¦ä¸€ç§å†™æ³•ã€‚</p>
+
+<pre><code>$ git clone [user@]example.com:path/to/repo.git/
+</code></pre>
+
+<p>é€šå¸¸æ¥è¯´ï¼ŒGitåè®®ä¸‹è½½é€Ÿåº¦æœ€å¿«ï¼ŒSSHåè®®ç”¨äºŽéœ€è¦ç”¨æˆ·è®¤è¯çš„åœºåˆã€‚å„ç§åè®®ä¼˜åŠ£çš„è¯¦ç»†è®¨è®ºè¯·å‚è€ƒå®˜æ–¹æ–‡æ¡£ã€‚
+äºŒã€git remote</p>
+
+<p>ä¸ºäº†ä¾¿äºŽç®¡ç†ï¼ŒGitè¦æ±‚æ¯ä¸ªè¿œç¨‹ä¸»æœºéƒ½å¿…é¡»æŒ‡å®šä¸€ä¸ªä¸»æœºåã€‚git remoteå‘½ä»¤å°±ç”¨äºŽç®¡ç†ä¸»æœºåã€‚</p>
+
+<p>ä¸å¸¦é€‰é¡¹çš„æ—¶å€™ï¼Œgit remoteå‘½ä»¤åˆ—å‡ºæ‰€æœ‰è¿œç¨‹ä¸»æœºã€‚</p>
+
+<pre><code>$ git remote
+origin
+</code></pre>
+
+<p>ä½¿ç”¨-vé€‰é¡¹ï¼Œå¯ä»¥å‚çœ‹è¿œç¨‹ä¸»æœºçš„ç½‘å€ã€‚</p>
+
+<pre><code>$ git remote -v
+origin  git@github.com:jquery/jquery.git (fetch)
+origin  git@github.com:jquery/jquery.git (push)
+</code></pre>
+
+<p>ä¸Šé¢å‘½ä»¤è¡¨ç¤ºï¼Œå½“å‰åªæœ‰ä¸€å°è¿œç¨‹ä¸»æœºï¼Œå«åšoriginï¼Œä»¥åŠå®ƒçš„ç½‘å€ã€‚</p>
+
+<p>å…‹éš†ç‰ˆæœ¬åº“çš„æ—¶å€™ï¼Œæ‰€ä½¿ç”¨çš„è¿œç¨‹ä¸»æœºè‡ªåŠ¨è¢«Gitå‘½åä¸ºoriginã€‚å¦‚æžœæƒ³ç”¨å…¶ä»–çš„ä¸»æœºåï¼Œéœ€è¦ç”¨git cloneå‘½ä»¤çš„-oé€‰é¡¹æŒ‡å®šã€‚</p>
+
+<pre><code>$ git clone -o jQuery https://github.com/jquery/jquery.git
+$ git remote
+jQuery
+</code></pre>
+
+<p>ä¸Šé¢å‘½ä»¤è¡¨ç¤ºï¼Œå…‹éš†çš„æ—¶å€™ï¼ŒæŒ‡å®šè¿œç¨‹ä¸»æœºå«åšjQueryã€‚</p>
+
+<p>git remote showå‘½ä»¤åŠ ä¸Šä¸»æœºåï¼Œå¯ä»¥æŸ¥çœ‹è¯¥ä¸»æœºçš„è¯¦ç»†ä¿¡æ¯ã€‚</p>
+
+<pre><code>$ git remote show &lt;ä¸»æœºå&gt;
+</code></pre>
+
+<p>git remote addå‘½ä»¤ç”¨äºŽæ·»åŠ è¿œç¨‹ä¸»æœºã€‚</p>
+
+<pre><code>$ git remote add &lt;ä¸»æœºå&gt; &lt;ç½‘å€&gt;
+</code></pre>
+
+<p>git remote rmå‘½ä»¤ç”¨äºŽåˆ é™¤è¿œç¨‹ä¸»æœºã€‚</p>
+
+<pre><code>$ git remote rm &lt;ä¸»æœºå&gt;
+</code></pre>
+
+<p>git remote renameå‘½ä»¤ç”¨äºŽè¿œç¨‹ä¸»æœºçš„æ”¹åã€‚</p>
+
+<pre><code>$ git remote rename &lt;åŽŸä¸»æœºå&gt; &lt;æ–°ä¸»æœºå&gt;
+</code></pre>
+
+<p>ä¸‰ã€git fetch</p>
+
+<p>ä¸€æ—¦è¿œç¨‹ä¸»æœºçš„ç‰ˆæœ¬åº“æœ‰äº†æ›´æ–°ï¼ˆGitæœ¯è¯­å«åšcommitï¼‰ï¼Œéœ€è¦å°†è¿™äº›æ›´æ–°å–å›žæœ¬åœ°ï¼Œè¿™æ—¶å°±è¦ç”¨åˆ°git fetchå‘½ä»¤ã€‚</p>
+
+<pre><code>$ git fetch &lt;è¿œç¨‹ä¸»æœºå&gt;
+</code></pre>
+
+<p>ä¸Šé¢å‘½ä»¤å°†æŸä¸ªè¿œç¨‹ä¸»æœºçš„æ›´æ–°ï¼Œå…¨éƒ¨å–å›žæœ¬åœ°ã€‚</p>
+
+<p>é»˜è®¤æƒ…å†µä¸‹ï¼Œgit fetchå–å›žæ‰€æœ‰åˆ†æ”¯ï¼ˆbranchï¼‰çš„æ›´æ–°ã€‚å¦‚æžœåªæƒ³å–å›žç‰¹å®šåˆ†æ”¯çš„æ›´æ–°ï¼Œå¯ä»¥æŒ‡å®šåˆ†æ”¯åã€‚</p>
+
+<pre><code>$ git fetch &lt;è¿œç¨‹ä¸»æœºå&gt; &lt;åˆ†æ”¯å&gt;
+</code></pre>
+
+<p>æ¯”å¦‚ï¼Œå–å›žoriginä¸»æœºçš„masteråˆ†æ”¯ã€‚</p>
+
+<pre><code>$ git fetch origin master
+</code></pre>
+
+<p>æ‰€å–å›žçš„æ›´æ–°ï¼Œåœ¨æœ¬åœ°ä¸»æœºä¸Šè¦ç”¨&ldquo;è¿œç¨‹ä¸»æœºå/åˆ†æ”¯å&quot;çš„å½¢å¼è¯»å–ã€‚æ¯”å¦‚originä¸»æœºçš„masterï¼Œå°±è¦ç”¨origin/masterè¯»å–ã€‚</p>
+
+<p>git branchå‘½ä»¤çš„-ré€‰é¡¹ï¼Œå¯ä»¥ç”¨æ¥æŸ¥çœ‹è¿œç¨‹åˆ†æ”¯ï¼Œ-aé€‰é¡¹æŸ¥çœ‹æ‰€æœ‰åˆ†æ”¯ã€‚</p>
+
+<pre><code>$ git branch -r
+origin/master
+
+$ git branch -a
+* master
+  remotes/origin/master
+</code></pre>
+
+<p>ä¸Šé¢å‘½ä»¤è¡¨ç¤ºï¼Œæœ¬åœ°ä¸»æœºçš„å½“å‰åˆ†æ”¯æ˜¯masterï¼Œè¿œç¨‹åˆ†æ”¯æ˜¯origin/masterã€‚</p>
+
+<p>å–å›žè¿œç¨‹ä¸»æœºçš„æ›´æ–°ä»¥åŽï¼Œå¯ä»¥åœ¨å®ƒçš„åŸºç¡€ä¸Šï¼Œä½¿ç”¨git checkoutå‘½ä»¤åˆ›å»ºä¸€ä¸ªæ–°çš„åˆ†æ”¯ã€‚</p>
+
+<pre><code>$ git checkout -b newBrach origin/master
+</code></pre>
+
+<p>ä¸Šé¢å‘½ä»¤è¡¨ç¤ºï¼Œåœ¨origin/masterçš„åŸºç¡€ä¸Šï¼Œåˆ›å»ºä¸€ä¸ªæ–°åˆ†æ”¯ã€‚</p>
+
+<p>æ­¤å¤–ï¼Œä¹Ÿå¯ä»¥ä½¿ç”¨git mergeå‘½ä»¤æˆ–è€…git rebaseå‘½ä»¤ï¼Œåœ¨æœ¬åœ°åˆ†æ”¯ä¸Šåˆå¹¶è¿œç¨‹åˆ†æ”¯ã€‚? (These two are diff)</p>
+
+<pre><code>$ git merge origin/master
+# æˆ–è€…
+$ git rebase origin/master
+</code></pre>
+
+<p>ä¸Šé¢å‘½ä»¤è¡¨ç¤ºåœ¨å½“å‰åˆ†æ”¯ä¸Šï¼Œåˆå¹¶origin/masterã€‚
+å››ã€git pull</p>
+
+<p>git pullå‘½ä»¤çš„ä½œç”¨æ˜¯ï¼Œå–å›žè¿œç¨‹ä¸»æœºæŸä¸ªåˆ†æ”¯çš„æ›´æ–°ï¼Œå†ä¸Žæœ¬åœ°çš„æŒ‡å®šåˆ†æ”¯åˆå¹¶ã€‚å®ƒçš„å®Œæ•´æ ¼å¼ç¨ç¨æœ‰ç‚¹å¤æ‚ã€‚</p>
+
+<pre><code>$ git pull &lt;è¿œç¨‹ä¸»æœºå&gt; &lt;è¿œç¨‹åˆ†æ”¯å&gt;:&lt;æœ¬åœ°åˆ†æ”¯å&gt;
+</code></pre>
+
+<p>æ¯”å¦‚ï¼Œå–å›žoriginä¸»æœºçš„nextåˆ†æ”¯ï¼Œä¸Žæœ¬åœ°çš„masteråˆ†æ”¯åˆå¹¶ï¼Œéœ€è¦å†™æˆä¸‹é¢è¿™æ ·ã€‚</p>
+
+<pre><code>$ git pull origin next:master
+</code></pre>
+
+<p>å¦‚æžœè¿œç¨‹åˆ†æ”¯æ˜¯ä¸Žå½“å‰åˆ†æ”¯åˆå¹¶ï¼Œåˆ™å†’å·åŽé¢çš„éƒ¨åˆ†å¯ä»¥çœç•¥ã€‚</p>
+
+<pre><code>$ git pull origin next
+</code></pre>
+
+<p>ä¸Šé¢å‘½ä»¤è¡¨ç¤ºï¼Œå–å›žorigin/nextåˆ†æ”¯ï¼Œå†ä¸Žå½“å‰åˆ†æ”¯åˆå¹¶ã€‚å®žè´¨ä¸Šï¼Œè¿™ç­‰åŒäºŽå…ˆåšgit fetchï¼Œå†åšgit mergeã€‚</p>
+
+<pre><code>$ git fetch origin
+$ git merge origin/next
+</code></pre>
+
+<p>åœ¨æŸäº›åœºåˆï¼ŒGitä¼šè‡ªåŠ¨åœ¨æœ¬åœ°åˆ†æ”¯ä¸Žè¿œç¨‹åˆ†æ”¯ä¹‹é—´ï¼Œå»ºç«‹ä¸€ç§è¿½è¸ªå…³ç³»ï¼ˆtrackingï¼‰ã€‚æ¯”å¦‚ï¼Œåœ¨git cloneçš„æ—¶å€™ï¼Œæ‰€æœ‰æœ¬åœ°åˆ†æ”¯é»˜è®¤ä¸Žè¿œç¨‹ä¸»æœºçš„åŒååˆ†æ”¯ï¼Œå»ºç«‹è¿½è¸ªå…³ç³»ï¼Œä¹Ÿå°±æ˜¯è¯´ï¼Œæœ¬åœ°çš„masteråˆ†æ”¯è‡ªåŠ¨&quot;è¿½è¸ª&quot;origin/masteråˆ†æ”¯ã€‚</p>
+
+<p>Gitä¹Ÿå…è®¸æ‰‹åŠ¨å»ºç«‹è¿½è¸ªå…³ç³»ã€‚</p>
+
+<pre><code>git branch --set-upstream master origin/next
+</code></pre>
+
+<p>ä¸Šé¢å‘½ä»¤æŒ‡å®šmasteråˆ†æ”¯è¿½è¸ªorigin/nextåˆ†æ”¯ã€‚</p>
+
+<p>å¦‚æžœå½“å‰åˆ†æ”¯ä¸Žè¿œç¨‹åˆ†æ”¯å­˜åœ¨è¿½è¸ªå…³ç³»ï¼Œgit pullå°±å¯ä»¥çœç•¥è¿œç¨‹åˆ†æ”¯åã€‚</p>
+
+<pre><code>$ git pull origin
+</code></pre>
+
+<p>ä¸Šé¢å‘½ä»¤è¡¨ç¤ºï¼Œæœ¬åœ°çš„å½“å‰åˆ†æ”¯è‡ªåŠ¨ä¸Žå¯¹åº”çš„originä¸»æœº&quot;è¿½è¸ªåˆ†æ”¯&quot;ï¼ˆremote-tracking branchï¼‰è¿›è¡Œåˆå¹¶ã€‚</p>
+
+<p>å¦‚æžœå½“å‰åˆ†æ”¯åªæœ‰ä¸€ä¸ªè¿½è¸ªåˆ†æ”¯ï¼Œè¿žè¿œç¨‹ä¸»æœºåéƒ½å¯ä»¥çœç•¥ã€‚</p>
+
+<pre><code>$ git pull
+</code></pre>
+
+<p>ä¸Šé¢å‘½ä»¤è¡¨ç¤ºï¼Œå½“å‰åˆ†æ”¯è‡ªåŠ¨ä¸Žå”¯ä¸€ä¸€ä¸ªè¿½è¸ªåˆ†æ”¯è¿›è¡Œåˆå¹¶ã€‚</p>
+
+<p>å¦‚æžœåˆå¹¶éœ€è¦é‡‡ç”¨rebaseæ¨¡å¼ï¼Œå¯ä»¥ä½¿ç”¨&ndash;rebaseé€‰é¡¹ã€‚</p>
+
+<pre><code>$ git pull --rebase &lt;è¿œç¨‹ä¸»æœºå&gt; &lt;è¿œç¨‹åˆ†æ”¯å&gt;:&lt;æœ¬åœ°åˆ†æ”¯å&gt;
+</code></pre>
+
+<p>äº”ã€git push</p>
+
+<p>git pushå‘½ä»¤ç”¨äºŽå°†æœ¬åœ°åˆ†æ”¯çš„æ›´æ–°ï¼ŒæŽ¨é€åˆ°è¿œç¨‹ä¸»æœºã€‚å®ƒçš„æ ¼å¼ä¸Žgit pullå‘½ä»¤ç›¸ä»¿ã€‚</p>
+
+<pre><code>$ git push &lt;è¿œç¨‹ä¸»æœºå&gt; &lt;æœ¬åœ°åˆ†æ”¯å&gt;:&lt;è¿œç¨‹åˆ†æ”¯å&gt;
+</code></pre>
+
+<p>æ³¨æ„ï¼Œåˆ†æ”¯æŽ¨é€é¡ºåºçš„å†™æ³•æ˜¯<æ¥æºåœ°>:<ç›®çš„åœ°>ï¼Œæ‰€ä»¥git pullæ˜¯<è¿œç¨‹åˆ†æ”¯>:<æœ¬åœ°åˆ†æ”¯>ï¼Œè€Œgit pushæ˜¯<æœ¬åœ°åˆ†æ”¯>:<è¿œç¨‹åˆ†æ”¯>ã€‚</p>
+
+<p>å¦‚æžœçœç•¥è¿œç¨‹åˆ†æ”¯åï¼Œåˆ™è¡¨ç¤ºå°†æœ¬åœ°åˆ†æ”¯æŽ¨é€ä¸Žä¹‹å­˜åœ¨&quot;è¿½è¸ªå…³ç³»&quot;çš„è¿œç¨‹åˆ†æ”¯ï¼ˆé€šå¸¸ä¸¤è€…åŒåï¼‰ï¼Œå¦‚æžœè¯¥è¿œç¨‹åˆ†æ”¯ä¸å­˜åœ¨ï¼Œåˆ™ä¼šè¢«æ–°å»ºã€‚</p>
+
+<pre><code>$ git push origin master
+</code></pre>
+
+<p>ä¸Šé¢å‘½ä»¤è¡¨ç¤ºï¼Œå°†æœ¬åœ°çš„masteråˆ†æ”¯æŽ¨é€åˆ°originä¸»æœºçš„masteråˆ†æ”¯ã€‚å¦‚æžœåŽè€…ä¸å­˜åœ¨ï¼Œåˆ™ä¼šè¢«æ–°å»ºã€‚</p>
+
+<p>å¦‚æžœçœç•¥æœ¬åœ°åˆ†æ”¯åï¼Œåˆ™è¡¨ç¤ºåˆ é™¤æŒ‡å®šçš„è¿œç¨‹åˆ†æ”¯ï¼Œå› ä¸ºè¿™ç­‰åŒäºŽæŽ¨é€ä¸€ä¸ªç©ºçš„æœ¬åœ°åˆ†æ”¯åˆ°è¿œç¨‹åˆ†æ”¯ã€‚</p>
+
+<pre><code>$ git push origin :master
+# ç­‰åŒäºŽ
+$ git push origin --delete master
+</code></pre>
+
+<p>ä¸Šé¢å‘½ä»¤è¡¨ç¤ºåˆ é™¤originä¸»æœºçš„masteråˆ†æ”¯ã€‚</p>
+
+<p>å¦‚æžœå½“å‰åˆ†æ”¯ä¸Žè¿œç¨‹åˆ†æ”¯ä¹‹é—´å­˜åœ¨è¿½è¸ªå…³ç³»ï¼Œåˆ™æœ¬åœ°åˆ†æ”¯å’Œè¿œç¨‹åˆ†æ”¯éƒ½å¯ä»¥çœç•¥ã€‚</p>
+
+<pre><code>$ git push origin
+</code></pre>
+
+<p>ä¸Šé¢å‘½ä»¤è¡¨ç¤ºï¼Œå°†å½“å‰åˆ†æ”¯æŽ¨é€åˆ°originä¸»æœºçš„å¯¹åº”åˆ†æ”¯ã€‚</p>
+
+<p>å¦‚æžœå½“å‰åˆ†æ”¯åªæœ‰ä¸€ä¸ªè¿½è¸ªåˆ†æ”¯ï¼Œé‚£ä¹ˆä¸»æœºåéƒ½å¯ä»¥çœç•¥ã€‚</p>
+
+<pre><code>$ git push
+</code></pre>
+
+<p>å¦‚æžœå½“å‰åˆ†æ”¯ä¸Žå¤šä¸ªä¸»æœºå­˜åœ¨è¿½è¸ªå…³ç³»ï¼Œåˆ™å¯ä»¥ä½¿ç”¨-ué€‰é¡¹æŒ‡å®šä¸€ä¸ªé»˜è®¤ä¸»æœºï¼Œè¿™æ ·åŽé¢å°±å¯ä»¥ä¸åŠ ä»»ä½•å‚æ•°ä½¿ç”¨git pushã€‚</p>
+
+<pre><code>$ git push -u origin master
+</code></pre>
+
+<p>ä¸Šé¢å‘½ä»¤å°†æœ¬åœ°çš„masteråˆ†æ”¯æŽ¨é€åˆ°originä¸»æœºï¼ŒåŒæ—¶æŒ‡å®šoriginä¸ºé»˜è®¤ä¸»æœºï¼ŒåŽé¢å°±å¯ä»¥ä¸åŠ ä»»ä½•å‚æ•°ä½¿ç”¨git pushäº†ã€‚</p>
+
+<p>ä¸å¸¦ä»»ä½•å‚æ•°çš„git pushï¼Œé»˜è®¤åªæŽ¨é€å½“å‰åˆ†æ”¯ï¼Œè¿™å«åšsimpleæ–¹å¼ã€‚æ­¤å¤–ï¼Œè¿˜æœ‰ä¸€ç§matchingæ–¹å¼ï¼Œä¼šæŽ¨é€æ‰€æœ‰æœ‰å¯¹åº”çš„è¿œç¨‹åˆ†æ”¯çš„æœ¬åœ°åˆ†æ”¯ã€‚Git 2.0ç‰ˆæœ¬ä¹‹å‰ï¼Œé»˜è®¤é‡‡ç”¨matchingæ–¹æ³•ï¼ŒçŽ°åœ¨æ”¹ä¸ºé»˜è®¤é‡‡ç”¨simpleæ–¹å¼ã€‚å¦‚æžœè¦ä¿®æ”¹è¿™ä¸ªè®¾ç½®ï¼Œå¯ä»¥é‡‡ç”¨git configå‘½ä»¤ã€‚</p>
+
+<pre><code>$ git config --global push.default matching
+# æˆ–è€…
+$ git config --global push.default simple
+</code></pre>
+
+<p>è¿˜æœ‰ä¸€ç§æƒ…å†µï¼Œå°±æ˜¯ä¸ç®¡æ˜¯å¦å­˜åœ¨å¯¹åº”çš„è¿œç¨‹åˆ†æ”¯ï¼Œå°†æœ¬åœ°çš„æ‰€æœ‰åˆ†æ”¯éƒ½æŽ¨é€åˆ°è¿œç¨‹ä¸»æœºï¼Œè¿™æ—¶éœ€è¦ä½¿ç”¨&ndash;allé€‰é¡¹ã€‚</p>
+
+<pre><code>$ git push --all origin
+</code></pre>
+
+<p>ä¸Šé¢å‘½ä»¤è¡¨ç¤ºï¼Œå°†æ‰€æœ‰æœ¬åœ°åˆ†æ”¯éƒ½æŽ¨é€åˆ°originä¸»æœºã€‚</p>
+
+<p>å¦‚æžœè¿œç¨‹ä¸»æœºçš„ç‰ˆæœ¬æ¯”æœ¬åœ°ç‰ˆæœ¬æ›´æ–°ï¼ŒæŽ¨é€æ—¶Gitä¼šæŠ¥é”™ï¼Œè¦æ±‚å…ˆåœ¨æœ¬åœ°åšgit pullåˆå¹¶å·®å¼‚ï¼Œç„¶åŽå†æŽ¨é€åˆ°è¿œç¨‹ä¸»æœºã€‚è¿™æ—¶ï¼Œå¦‚æžœä½ ä¸€å®šè¦æŽ¨é€ï¼Œå¯ä»¥ä½¿ç”¨&ndash;forceé€‰é¡¹ã€‚</p>
+
+<pre><code>$ git push --force origin 
+</code></pre>
+
+<p>ä¸Šé¢å‘½ä»¤ä½¿ç”¨&ndash;forceé€‰é¡¹ï¼Œç»“æžœå¯¼è‡´åœ¨è¿œç¨‹ä¸»æœºäº§ç”Ÿä¸€ä¸ª&quot;éžç›´è¿›å¼&quot;çš„åˆå¹¶ï¼ˆnon-fast-forward mergeï¼‰ã€‚é™¤éžä½ å¾ˆç¡®å®šè¦è¿™æ ·åšï¼Œå¦åˆ™åº”è¯¥å°½é‡é¿å…ä½¿ç”¨&ndash;forceé€‰é¡¹ã€‚</p>
+
+<p>æœ€åŽï¼Œgit pushä¸ä¼šæŽ¨é€æ ‡ç­¾ï¼ˆtagï¼‰ï¼Œé™¤éžä½¿ç”¨&ndash;tagsé€‰é¡¹ã€‚</p>
+
+<pre><code>$ git push origin --tags
+</code></pre>
+
+<p>ï¼ˆå®Œï¼‰</p>
+
+</body>
+
+</html>
